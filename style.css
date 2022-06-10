@@ -36,3 +36,9 @@
 .mbutton:hover{
 	background-color: green;
 }
+
+.center {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}

@@ -8,10 +8,10 @@
      <body>
 		<div class="menu">
 			<ul class="ulmenu">
-				<li class="mbutton"><a href="index.php">Strona główna</a></li>
-				<li class="mbutton"><a href="library.php">Biblioteka</a></li>
-				<li class="mbutton"><a href="lend.php">Wypożycz</a></li>
-				<li class="mbutton"><a href="return.php">Zwróć</a></li>
+				<li class="mbutton center"><a href="index.php">Strona główna</a></li>
+				<li class="mbutton center"><a href="library.php">Biblioteka</a></li>
+				<li class="mbutton center"><a href="lend.php">Wypożycz</a></li>
+				<li class="mbutton center"><a href="return.php">Zwróć</a></li>
 			</ul>
 		</div>
 		<div class="glowna">
