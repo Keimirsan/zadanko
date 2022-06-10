@@ -1,0 +1,3 @@
+# zadanko
+WSIZ zadanko
+tak
