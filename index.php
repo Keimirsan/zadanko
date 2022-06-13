@@ -12,7 +12,7 @@
 				<li class="mbutton center"><a href="library.php">Biblioteka</a></li>
 				<li class="mbutton center"><a href="lend.php">Wypożycz</a></li>
 				<li class="mbutton center"><a href="return.php">Zwróć</a></li>
-				<li class="mbutton center"><a href="return.php">Statystyka</a></li>
+				<li class="mbutton center"><a href="stats.php">Statystyka</a></li>
 			</ul>
 		</div>
 		<div class="glowna">
