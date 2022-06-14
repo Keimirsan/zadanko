@@ -32,7 +32,7 @@
 						//session_register("myusername");
 						$_SESSION['login_user'] = $myusername;
 					 
-					header("location: welcome.php");
+					header("location: start.php");
 					}else {
 						$error = "Your Login Name or Password is invalid";
 					}
@@ -43,10 +43,10 @@
 		<div class = "container">
       
 			<form action = "" method = "post">
-					<label>UserName  :</label><input type = "text" name = "username" class = "box"/><br /><br />
-					<label>Password  :</label><input type = "password" name = "password" class = "box" /><br/><br />
-					<input type = "submit" value = " Submit "/><br />
-				</form>
+				<label>UserName  :</label><input type = "text" name = "username" class = "box"/><br /><br/>
+				<label>Password  :</label><input type = "password" name = "password" class = "box" /><br/><br/>
+				<input type = "submit" value = " Submit "/><br/>
+			</form>
 			
 			Click here to clean <a href = "logout.php" tite = "Logout">Session.
          
