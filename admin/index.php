@@ -1,9 +1,9 @@
 <!doctype html>
 
 <?php
-   ob_start();
-   session_start();
-   $_SESSION['valid'] = false;
+	include("config.php");
+	session_start();
+	$_SESSION['valid'] = false;
 ?>
 
 <html>
