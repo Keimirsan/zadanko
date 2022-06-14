@@ -17,7 +17,8 @@
 				<li class="mbutton center"><a href="logout.php"><p>Wyloguj</p></a></li>
 			</ul>
 		</div>
-					<?php
+		<div class="glowna">
+			<?php
 				//include("config.php");
 			   
 				if($_SERVER["REQUEST_METHOD"] == "POST") { 
@@ -30,24 +31,42 @@
 				  
 					$sql = "INSERT INTO ksiazki(tytuł, gatunek, autor) VALUES ('$tytul','$gatunek','$autor')";
 					$result = mysqli_query($db,$sql);
-					echo $result;
+					//echo $result;
 				}
 			?>
-		<div class="glowna">
-			<form action = "" method = "post">
-				<h2>Dodaj książkę</h2>
-				<label>Tytul:</label><input type = "text" name = "tytul" class = "box"/><br /><br/>
-				<label>Gatunek:</label>
-					<select name = "gatunek">
-						<option value = "1">Fantastyka</option>
-						<option value = "2">Sci-Fi</option>
-						<option value = "3">Romans</option>
-						<option value = "4">Horror</option>
-					</select>
-				<br/><br/>
-				<label>Autor:</label><input type = "text" name = "autor" class = "box"/><br /><br/>
-				<input type = "submit" value = " Submit "/><br/>
-			</form>
+			<div> 
+				<form action = "" method = "post">
+					<h2>Dodaj książkę</h2>
+					<label>Tytul:</label><input type = "text" name = "tytul" class = "box" required/><br /><br/>
+					<label>Gatunek:</label>
+						<select name = "gatunek">
+							<option value = "1">Fantastyka</option>
+							<option value = "2">Sci-Fi</option>
+							<option value = "3">Romans</option>
+							<option value = "4">Horror</option>
+						</select>
+					<br/><br/>
+					<label>Autor:</label><input type = "text" name = "autor" class = "box" required/><br /><br/>
+					<input type = "submit" value = " Submit "/><br/>
+				</form>
+			</div>
+			<?php
+				$gatunekInt = array("Fantastyka", "Sci-Fi", "Romans", "Horror");
+				$stanInt = array("Dostępna", "Wypożyczona", "Zarezerwowana");
+				$sql = "SELECT * FROM ksiazki";
+				$result = mysqli_query($db,$sql);
+				if ($result->num_rows > 0) {
+					// output data of each row
+					while($row = $result->fetch_assoc()) {
+						echo "id: ".$row['ID']." | Tytuł: ".$row['tytul']." | Gatunek: ".$gatunekInt[$row['gatunek']- 1]." | Autor: ".$row['autor']." | Stan: ".$stanInt[$row['stan']- 1]."</br></br>";
+					}
+				} else {
+					echo "0 results";
+				}
+			?>
+			<div>
+				<h2>Zbiór książek</h2>
+			</div>
 		</div>
      </body>
 </html>
