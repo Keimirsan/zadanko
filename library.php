@@ -16,6 +16,8 @@
 			</ul>
 		</div>
 		<div class="glowna">
+		<h1>WYSZUKIWANIE KSIĄŻEK</h1>
+			
 			<?php
 			$mysqli = new mysqli("localhost","root","","biblioteka");
 

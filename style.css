@@ -44,6 +44,10 @@
   justify-content: center;
   align-items: center;
 }
-.glowna ul{
-	
+.glowna h1{
+	font-family: Arial;
+	font-size: 1em;
+	font-style: none;
+	text-align: center;
+	text-decoration: none;
 }
