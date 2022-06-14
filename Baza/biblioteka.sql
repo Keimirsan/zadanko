@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 14 Cze 2022, 11:10
+-- Czas generowania: 14 Cze 2022, 14:56
 -- Wersja serwera: 10.4.24-MariaDB
 -- Wersja PHP: 8.1.6
 
@@ -70,7 +70,7 @@ INSERT INTO `gatunek` (`ID`, `gatunek`) VALUES
 
 CREATE TABLE `ksiazki` (
   `ID` int(11) NOT NULL,
-  `tytuł` text COLLATE utf8_polish_ci NOT NULL,
+  `tytul` text COLLATE utf8_polish_ci NOT NULL,
   `gatunek` int(11) NOT NULL,
   `autor` text COLLATE utf8_polish_ci NOT NULL,
   `stan` int(11) NOT NULL DEFAULT 1
@@ -80,8 +80,16 @@ CREATE TABLE `ksiazki` (
 -- Zrzut danych tabeli `ksiazki`
 --
 
-INSERT INTO `ksiazki` (`ID`, `tytuł`, `gatunek`, `autor`, `stan`) VALUES
-(1, 'Lew, czarownica i stara szafa', 1, 'C.S. Lewis', 1);
+INSERT INTO `ksiazki` (`ID`, `tytul`, `gatunek`, `autor`, `stan`) VALUES
+(1, 'Lew, czarownica i stara szafa', 1, 'C.S. Lewis', 1),
+(5, 'df', 1, 'sd', 1),
+(6, 'dfg', 1, 'sdfg', 1),
+(7, 'dfg', 1, 'sdfg', 1),
+(8, 'dsfg', 1, 'dsg', 1),
+(9, 'dsfg', 3, 'sd', 1),
+(10, 'dsfg', 3, 'sd', 1),
+(11, 'dsfg', 3, 'sd', 1),
+(12, 'dsfg', 3, 'sd', 1);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -125,7 +133,7 @@ ALTER TABLE `gatunek`
 -- AUTO_INCREMENT dla tabeli `ksiazki`
 --
 ALTER TABLE `ksiazki`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
