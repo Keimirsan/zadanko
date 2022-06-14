@@ -50,22 +50,22 @@
 					<input type = "submit" value = " Submit "/><br/>
 				</form>
 			</div>
-			<?php
-				$gatunekInt = array("Fantastyka", "Sci-Fi", "Romans", "Horror");
-				$stanInt = array("Dostępna", "Wypożyczona", "Zarezerwowana");
-				$sql = "SELECT * FROM ksiazki";
-				$result = mysqli_query($db,$sql);
-				if ($result->num_rows > 0) {
-					// output data of each row
-					while($row = $result->fetch_assoc()) {
-						echo "id: ".$row['ID']." | Tytuł: ".$row['tytul']." | Gatunek: ".$gatunekInt[$row['gatunek']- 1]." | Autor: ".$row['autor']." | Stan: ".$stanInt[$row['stan']- 1]."</br></br>";
-					}
-				} else {
-					echo "0 results";
-				}
-			?>
 			<div>
 				<h2>Zbiór książek</h2>
+				<?php
+					$gatunekInt = array("Fantastyka", "Sci-Fi", "Romans", "Horror");
+					$stanInt = array("Dostępna", "Wypożyczona", "Zarezerwowana");
+					$sql = "SELECT * FROM ksiazki";
+					$result = mysqli_query($db,$sql);
+					if ($result->num_rows > 0) {
+						// output data of each row
+						while($row = $result->fetch_assoc()) {
+							echo "id: ".$row['ID']." | Tytuł: ".$row['tytul']." | Gatunek: ".$gatunekInt[$row['gatunek']- 1]." | Autor: ".$row['autor']." | Stan: ".$stanInt[$row['stan']- 1]."</br></br>";
+						}
+					} else {
+						echo "0 results";
+					}
+				?>
 			</div>
 		</div>
      </body>
