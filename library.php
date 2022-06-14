@@ -16,7 +16,26 @@
 			</ul>
 		</div>
 		<div class="glowna">
-		
+			<?php
+			$mysqli = new mysqli("localhost","root","","biblioteka");
+
+			// Check connection
+			if ($mysqli -> connect_errno) {
+			  echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+			  exit();
+			}
+			
+			mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+			$query = "SELECT id, tytuł, gatunek, autor FROM ksiazki ORDER BY ID DESC";
+
+			$result = $mysqli->query($query);
+			
+			/* fetch object array */
+			while ($row = $result->fetch_row()) {
+				printf("<ul>%s %s %s %s\n</ul>", $row[0], $row[1], $row[2], $row[3]);
+			}
+			?>
 		</div>
      </body>
 </html>
