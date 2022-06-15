@@ -17,15 +17,15 @@
 		</div>
 		<div class="glowna">
 		<h1>WYSZUKIWANIE KSIĄŻEK</h1>
-			<form action = "library.php" method = "post">
+			<form action = "" method = "post">
 				<label>Tytuł:</label><input type = "text" name = "tytul" class = "box"/>
 				<label for="gatunek">Gatunek:</label>
 				<select id="gatunek" name = "gatunek">
-					<option value="Wszystkie">Wszystkie</option>
-					 <option value="Fantastyka">Fantastyka</option>
-					 <option value="Sci-Fi">Sci-Fi</option>
-					 <option value="Romans">Romans</option>
-					 <option value="Horror">Horror</option>
+					<option value="0">Wszystkie</option>
+					 <option value="1">Fantastyka</option>
+					 <option value="2">Sci-Fi</option>
+					 <option value="3">Romans</option>
+					 <option value="4">Horror</option>
 				</select>
 				<input type = "submit" value = " Szukaj "/><br/>
 			</form>
@@ -38,25 +38,27 @@
 						// username and password sent from form 
 						
 					$tytul = mysqli_real_escape_string($db,$_POST['tytul']); 
-					  
-						while ($tytul = ''){
-						$tytul = str_replace('', '*', $tytul);
-						}
-					  
-					  
+					$gatunek = mysqli_real_escape_string($db,$_POST['gatunek']);
+					
+					if($gatunek == '0'){
+						$gatunek = '(1 OR 2 OR 3 OR 4)';
+					}
+					
+					
+				
+			
+			
+					mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+					$query = "SELECT id, tytul, gatunek, autor FROM ksiazki WHERE tytul LIKE '%$tytul%' AND gatunek = '$gatunek'";
+
+					$result = $db->query($query);
+					
+					/* fetch object array */
+					while ($row = $result->fetch_row()) {
+						printf("<ul>%s %s %s %s\n</ul>", $row[0], $row[1], $row[2], $row[3]);
+					}
 				}
-			
-			
-			mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-
-			$query = "SELECT id, tytuł, gatunek, autor FROM ksiazki WHERE tytuł = '$tytul' ORDER BY ID";
-
-			$result = $db->query($query);
-			
-			/* fetch object array */
-			while ($row = $result->fetch_row()) {
-				printf("<ul>%s %s %s %s\n</ul>", $row[0], $row[1], $row[2], $row[3]);
-			}
 			?>
 			</table>
 		</div>
