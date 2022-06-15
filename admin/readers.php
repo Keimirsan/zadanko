@@ -1,11 +1,15 @@
 <?php
 	include('session.php');
+	function deleteuser($id){
+		$sql = "DELETE FROM czytelnicy WHERE czytelnicy.id = $id"; 
+	}
 ?>
 <html>
      <head>
-          <meta charset="UTF-8" />
-          <title>Biblioteka</title>
-		  <link rel="stylesheet" href="style.css" type="text/css">
+		<meta http-equiv="Cache-control" content="no-store"/>
+        <meta charset="UTF-8" />
+        <title>Biblioteka</title>
+		<link rel="stylesheet" href="style.css" type="text/css"/>
      </head>
      <body>
 		<div class="menu">
@@ -39,14 +43,14 @@
 			</form>
 			<div>
 				<h2>Lista Czytelników</h2>
-				<ul>
+				<ul class = "lista">
 					<?php
 						$sql = "SELECT * FROM czytelnicy";
 						$result = mysqli_query($db,$sql);
 						if ($result->num_rows > 0) {
 							// output data of each row
 							while($row = $result->fetch_assoc()) {
-								echo "<li>id: ".$row['id']." | Imię i Nazwisko: ".$row['imie']."</li>";
+								echo "<li><div>id: ".$row['id']." | Imię i Nazwisko: ".$row['imie']." | </div><a onClick = 'deleteuser(".$row['id'].")'> Usuń</a></li>";
 							}
 						} else {
 							echo "0 results";
