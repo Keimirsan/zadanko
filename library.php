@@ -21,7 +21,7 @@
 				<label>Tytuł:</label><input type = "text" name = "tytul" class = "box"/>
 				<label for="gatunek">Gatunek:</label>
 				<select id="gatunek" name = "gatunek">
-					<option value="0">Wszystkie</option>
+					<option value="">Wszystkie</option>
 					 <option value="1">Fantastyka</option>
 					 <option value="2">Sci-Fi</option>
 					 <option value="3">Romans</option>
@@ -39,18 +39,10 @@
 						
 					$tytul = mysqli_real_escape_string($db,$_POST['tytul']); 
 					$gatunek = mysqli_real_escape_string($db,$_POST['gatunek']);
-					
-					if($gatunek == '0'){
-						$gatunek = '(1 OR 2 OR 3 OR 4)';
-					}
-					
-					
 				
-			
-			
 					mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-					$query = "SELECT id, tytul, gatunek, autor FROM ksiazki WHERE tytul LIKE '%$tytul%' AND gatunek = '$gatunek'";
+					$query = "SELECT id, tytul, gatunek, autor FROM ksiazki WHERE tytul LIKE '%$tytul%' AND gatunek LIKE '%$gatunek%'";
 
 					$result = $db->query($query);
 					
