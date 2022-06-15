@@ -52,6 +52,7 @@
 			</div>
 			<div>
 				<h2>Zbiór książek</h2>
+				<ul>
 				<?php
 					$gatunekInt = array("Fantastyka", "Sci-Fi", "Romans", "Horror");
 					$stanInt = array("Dostępna", "Wypożyczona", "Zarezerwowana");
@@ -60,12 +61,13 @@
 					if ($result->num_rows > 0) {
 						// output data of each row
 						while($row = $result->fetch_assoc()) {
-							echo "id: ".$row['ID']." | Tytuł: ".$row['tytul']." | Gatunek: ".$gatunekInt[$row['gatunek']- 1]." | Autor: ".$row['autor']." | Stan: ".$stanInt[$row['stan']- 1]."</br></br>";
+							echo "<li>id: ".$row['ID']." | Tytuł: ".$row['tytul']." | Gatunek: ".$gatunekInt[$row['gatunek']- 1]." | Autor: ".$row['autor']." | Stan: ".$stanInt[$row['stan']- 1]."</li>";
 						}
 					} else {
 						echo "0 results";
 					}
 				?>
+				</ul>
 			</div>
 		</div>
      </body>
