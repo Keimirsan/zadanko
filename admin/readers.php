@@ -1,8 +1,6 @@
 <?php
-	include('session.php');
-	function deleteuser($id){
-		$sql = "DELETE FROM czytelnicy WHERE czytelnicy.id = $id"; 
-	}
+	include("config.php");
+	session_start();
 ?>
 <html>
      <head>
@@ -24,7 +22,7 @@
 		<div class="glowna">
 			<?php
 				if($_SERVER["REQUEST_METHOD"] == "POST") { 
-					
+					echo 'add';
 					$login = mysqli_real_escape_string($db,$_POST['login']);
 					$haslo = mysqli_real_escape_string($db,$_POST['haslo']);
 					$imie = mysqli_real_escape_string($db,$_POST['imie']);
@@ -36,9 +34,9 @@
 			?>
 			<form action = "" method = "post">
 				<h2>Dodaj Czytelnika</h2>
-				<label>Login: </label><input type = "text" name = "login" class = "box" required/><br /><br/>
+				<label>Login: </label><input type = "text" name = "login" class = "box" required/><br/><br/>
 				<label>Hasło: </label><input type = "text" name = "haslo" class = "box" required/><br/><br/>
-				<label>Imię i Nazwisko: </label><input type = "text" name = "imie" class = "box" required/><br /><br/>
+				<label>Imię i Nazwisko: </label><input type = "text" name = "imie" class = "box" required/><br/><br/>
 				<input type = "submit" value = " Submit "/><br/>
 			</form>
 			<div>
@@ -50,8 +48,8 @@
 						if ($result->num_rows > 0) {
 							// output data of each row
 							while($row = $result->fetch_assoc()) {
-								echo "<li><div>id: ".$row['id']." | Imię i Nazwisko: ".$row['imie']." | </div><a onClick = 'deleteuser(".$row['id'].")'> Usuń</a></li>";
-							}
+								echo "<li><div>id: ".$row['id']." | Imię i Nazwisko: ".$row['imie']." | <form action='deleteuser.php' method='post'><input type='submit' name='delete' value=".$row['id']." /></form></li>";
+							} //.$row['id'].
 						} else {
 							echo "0 results";
 						}
