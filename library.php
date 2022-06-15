@@ -41,7 +41,7 @@
 				
 					mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-					$query = "SELECT id, tytul, gatunek, autor FROM ksiazki WHERE tytul LIKE '%$tytul%'  OR autor LIKE '%$tytul%' AND gatunek LIKE '%$gatunek%'";
+					$query = "SELECT id, tytul, gatunek, autor FROM ksiazki WHERE (tytul LIKE '%$tytul%'  OR autor LIKE '%$tytul%') AND gatunek LIKE '%$gatunek%'";
 
 					$result = $db->query($query);
 					
