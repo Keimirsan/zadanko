@@ -35,7 +35,6 @@
 				session_start();
 				
 				if($_SERVER["REQUEST_METHOD"] == "POST") { 
-						// username and password sent from form 
 						
 					$tytul = mysqli_real_escape_string($db,$_POST['tytul']); 
 					$gatunek = mysqli_real_escape_string($db,$_POST['gatunek']);
@@ -46,7 +45,6 @@
 
 					$result = $db->query($query);
 					
-					/* fetch object array */
 					while ($row = $result->fetch_row()) {
 						printf("<ul>%s %s %s %s\n</ul>", $row[0], $row[1], $row[2], $row[3]);
 					}
