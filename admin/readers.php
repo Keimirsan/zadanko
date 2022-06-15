@@ -31,12 +31,29 @@
 				}
 			?>
 			<form action = "" method = "post">
-					<h2>Dodaj Czytelnika</h2>
-					<label>Login: </label><input type = "text" name = "login" class = "box" required/><br /><br/>
-					<label>Hasło: </label><input type = "text" name = "haslo" class = "box" required/><br/><br/>
-					<label>Imię i Nazwisko: </label><input type = "text" name = "imie" class = "box" required/><br /><br/>
-					<input type = "submit" value = " Submit "/><br/>
-				</form>
+				<h2>Dodaj Czytelnika</h2>
+				<label>Login: </label><input type = "text" name = "login" class = "box" required/><br /><br/>
+				<label>Hasło: </label><input type = "text" name = "haslo" class = "box" required/><br/><br/>
+				<label>Imię i Nazwisko: </label><input type = "text" name = "imie" class = "box" required/><br /><br/>
+				<input type = "submit" value = " Submit "/><br/>
+			</form>
+			<div>
+				<h2>Lista Czytelników</h2>
+				<ul>
+					<?php
+						$sql = "SELECT * FROM czytelnicy";
+						$result = mysqli_query($db,$sql);
+						if ($result->num_rows > 0) {
+							// output data of each row
+							while($row = $result->fetch_assoc()) {
+								echo "<li>id: ".$row['id']." | Imię i Nazwisko: ".$row['imie']."</li>";
+							}
+						} else {
+							echo "0 results";
+						}
+					?>
+				</ul>
+			</div>
 		</div>
-     </body>
+    </body>
 </html>
