@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 14 Cze 2022, 14:56
+-- Czas generowania: 15 Cze 2022, 08:40
 -- Wersja serwera: 10.4.24-MariaDB
 -- Wersja PHP: 8.1.6
 
@@ -44,6 +44,28 @@ INSERT INTO `admin` (`id`, `login`, `password`, `imie`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla tabeli `czytelnicy`
+--
+
+CREATE TABLE `czytelnicy` (
+  `id` int(11) NOT NULL,
+  `login` text NOT NULL,
+  `password` text NOT NULL,
+  `imie` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Zrzut danych tabeli `czytelnicy`
+--
+
+INSERT INTO `czytelnicy` (`id`, `login`, `password`, `imie`) VALUES
+(1, 'user', 'user', 'Janusz Kowalski'),
+(2, 'user2', 'user2', 'Adrian Ziutek'),
+(3, 'user3', 'user3', 'Mariusz Ziomek');
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `gatunek`
 --
 
@@ -73,23 +95,24 @@ CREATE TABLE `ksiazki` (
   `tytul` text COLLATE utf8_polish_ci NOT NULL,
   `gatunek` int(11) NOT NULL,
   `autor` text COLLATE utf8_polish_ci NOT NULL,
-  `stan` int(11) NOT NULL DEFAULT 1
+  `stan` int(11) NOT NULL DEFAULT 1,
+  `czytelnik` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
 -- Zrzut danych tabeli `ksiazki`
 --
 
-INSERT INTO `ksiazki` (`ID`, `tytul`, `gatunek`, `autor`, `stan`) VALUES
-(1, 'Lew, czarownica i stara szafa', 1, 'C.S. Lewis', 1),
-(5, 'df', 1, 'sd', 1),
-(6, 'dfg', 1, 'sdfg', 1),
-(7, 'dfg', 1, 'sdfg', 1),
-(8, 'dsfg', 1, 'dsg', 1),
-(9, 'dsfg', 3, 'sd', 1),
-(10, 'dsfg', 3, 'sd', 1),
-(11, 'dsfg', 3, 'sd', 1),
-(12, 'dsfg', 3, 'sd', 1);
+INSERT INTO `ksiazki` (`ID`, `tytul`, `gatunek`, `autor`, `stan`, `czytelnik`) VALUES
+(1, 'Lew, czarownica i stara szafa', 1, 'C.S. Lewis', 1, 0),
+(5, 'df', 1, 'sd', 1, 0),
+(6, 'dfg', 1, 'sdfg', 1, 0),
+(7, 'dfg', 1, 'sdfg', 1, 0),
+(8, 'dsfg', 1, 'dsg', 1, 0),
+(9, 'dsfg', 3, 'sd', 1, 0),
+(10, 'dsfg', 3, 'sd', 1, 0),
+(11, 'dsfg', 3, 'sd', 1, 0),
+(12, 'dsfg', 3, 'sd', 1, 0);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -99,6 +122,12 @@ INSERT INTO `ksiazki` (`ID`, `tytul`, `gatunek`, `autor`, `stan`) VALUES
 -- Indeksy dla tabeli `admin`
 --
 ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeksy dla tabeli `czytelnicy`
+--
+ALTER TABLE `czytelnicy`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -122,6 +151,12 @@ ALTER TABLE `ksiazki`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT dla tabeli `czytelnicy`
+--
+ALTER TABLE `czytelnicy`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT dla tabeli `gatunek`
