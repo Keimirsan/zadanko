@@ -48,7 +48,7 @@
 						if ($result->num_rows > 0) {
 							// output data of each row
 							while($row = $result->fetch_assoc()) {
-								echo "<li><div>id: ".$row['id']." | Imię i Nazwisko: ".$row['imie']." | <form action='deleteuser.php' method='post'><input type='submit' name='delete' value=".$row['id']." /></form></li>";
+								echo "<li><div>id: ".$row['id']." | Imię i Nazwisko: ".$row['imie']." | </div><form action='deleteuser.php' method='post'>&nbsp<button type='submit' name='delete' value=".$row['id'].">Usuń</button></form></li>";
 							} //.$row['id'].
 						} else {
 							echo "0 results";
