@@ -22,7 +22,7 @@
 		<div class="glowna">
 			<?php
 				if($_SERVER["REQUEST_METHOD"] == "POST") { 
-					echo 'add';
+					//echo 'add';
 					$login = mysqli_real_escape_string($db,$_POST['login']);
 					$haslo = mysqli_real_escape_string($db,$_POST['haslo']);
 					$imie = mysqli_real_escape_string($db,$_POST['imie']);
