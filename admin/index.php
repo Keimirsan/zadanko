@@ -30,7 +30,7 @@
 					
 					if($count == 1) {
 						//session_register("myusername");
-						$_SESSION['login_user'] = $myusername;
+						$_SESSION['login_admin'] = $myusername;
 					 
 					header("location: start.php");
 					}else {

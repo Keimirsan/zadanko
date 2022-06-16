@@ -2,7 +2,7 @@
 	include('config.php');
 	session_start();
    
-	$user_check = $_SESSION['login_user'];
+	$user_check = $_SESSION['login_admin'];
 	
 	$ses_sql = mysqli_query($db,"select login from admin where login = '$user_check' ");
    
@@ -10,7 +10,7 @@
    
 	$login_session = $row['login'];
    
-	if(!isset($_SESSION['login_user'])){
+	if(!isset($_SESSION['login_admin'])){
 		header("location:index.php");
 		die();
 	}
