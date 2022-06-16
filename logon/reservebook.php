@@ -14,9 +14,9 @@
 			$id = $usrrow['id'];
 			$sql = "UPDATE ksiazki SET stan = 3, czytelnik = $id WHERE ksiazki.ID = $reserve;";
 			$result = mysqli_query($db,$sql);
-			header("location:library.php?var=0");
+			header("location:library.php");
 		}else{
-			header("location:library.php?var=1");
+			header("location:library.php");
 		}
 	}
 ?>
