@@ -39,7 +39,7 @@
 						//session_register("myusername");
 						$_SESSION['login_user'] = $myusername;
 					 
-					header("location: /zadanko/logon/index.php");
+					header("location: /zadanko/logon/listbook.php");
 					}else {
 						$error = "Zły login lub hasło";
 						echo $error;
