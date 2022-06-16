@@ -58,7 +58,7 @@
 						echo "<td>$row[1]</td>";
 						echo "<td>".$gatunekInt[$row[2]- 1]."</td>";
 						echo "<td>$row[3]</td>";
-
+						echo "<td><form action='reservebook.php' method='post'>&nbsp<button type='submit' name='delete' value=".$row[0].">Zarezerwuj</button></form></td>";
 						echo "</tr>\n";
 						//printf("<ul>%s %s %s %s\n</ul>", $row[0], $row[1], $row[2], $row[3]);
 					}
