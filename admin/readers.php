@@ -20,21 +20,7 @@
 			</ul>
 		</div>
 		<div class="glowna">
-			<?php
-				if($_SERVER["REQUEST_METHOD"] == "POST") { 
-					//echo 'add';
-					$login = mysqli_real_escape_string($db,$_POST['login']);
-					$haslo = mysqli_real_escape_string($db,$_POST['haslo']);
-					$imie = mysqli_real_escape_string($db,$_POST['imie']);
-					$urodziny = mysqli_real_escape_string($db,$_POST['urodziny']);
-					$plec = mysqli_real_escape_string($db,$_POST['plec']);
-					
-					$sql = "INSERT INTO czytelnicy(login, password, imie, urodziny, plec) VALUES ('$login','$haslo','$imie', '$urodziny', '$plec')";
-					$result = mysqli_query($db,$sql);
-					//echo $result;
-				}
-			?>
-			<form action = "" method = "post">
+			<form action = "adduser.php" method = "post">
 				<h2>Dodaj Czytelnika</h2>
 				<label>Login: </label><input type = "text" name = "login" class = "box" required/><br/><br/>
 				<label>Hasło: </label><input type = "text" name = "haslo" class = "box" required/><br/><br/>
@@ -42,6 +28,7 @@
 				<label>Data Urodzenia: </label><input type = "date" name = "urodziny" class = "box" required/><br/><br/>
 				<label>Płeć: </label>
 					<select name = "plec">
+						<option value = "0">Nieokreślono</option>
 						<option value = "1">Mężczyzna</option>
 						<option value = "2">Kobieta</option>
 					</select>
