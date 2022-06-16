@@ -56,6 +56,9 @@
 .tablica td{border:1px solid black; background-color:#c5c9c7;}
 .tablica th{border:1px solid black; background-color:#93edc0;}
 .tablica {border:1px solid black; text-align:center;}
+.tablica tr:hover td{
+    background-color: #ff7733;
+}
 .form{
 	text-align:center;
 }
