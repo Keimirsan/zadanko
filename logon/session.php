@@ -11,7 +11,7 @@
 	$login_session = $row['login'];
    
 	if(!isset($_SESSION['login_user'])){
-		header("location:/zadanko/index.php");
+		header("location:/zadanko/login.php");
 		die();
 	}
 ?>
