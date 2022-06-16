@@ -48,7 +48,7 @@
 					
 						mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-						$query = "SELECT imie, urodziny, plec, id FROM czytelnicy";
+						$query = "SELECT imie, urodziny, plec, id FROM czytelnicy ORDER BY imie ASC";
 						
 						$result = $db->query($query);
 						
