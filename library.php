@@ -41,14 +41,14 @@
 				session_start();
 				
 				if($_SERVER["REQUEST_METHOD"] == "POST") { 
-						
+					$gatunekInt = array("Fantastyka", "Sci-Fi", "Romans", "Horror");
 					$tytul = mysqli_real_escape_string($db,$_POST['tytul']); 
 					$gatunek = mysqli_real_escape_string($db,$_POST['gatunek']);
 				
 					mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 					$query = "SELECT id, tytul, gatunek, autor FROM ksiazki WHERE (tytul LIKE '%$tytul%'  OR autor LIKE '%$tytul%') AND gatunek LIKE '%$gatunek%'";
-
+					
 					$result = $db->query($query);
 					
 					while ($row = $result->fetch_row()) {
@@ -56,7 +56,7 @@
 
 						echo "<td>$row[0]</td>";
 						echo "<td>$row[1]</td>";
-						echo "<td>$row[2]</td>";
+						echo "<td>".$gatunekInt[$row[2]- 1]."</td>";
 						echo "<td>$row[3]</td>";
 
 						echo "</tr>\n";
