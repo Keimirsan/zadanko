@@ -28,7 +28,14 @@
 				</select>
 				<input type = "submit" value = " Szukaj "/><br/>
 			</form>
-			<table>
+			</br>
+			<table class="tablica">
+				<tr>
+					<th>ID</th>
+					<th>Tytuł</th>
+					<th>Gatunek</th>
+					<th>Autor</tr>
+				</tr>
 			<?php
 			include("config.php");
 				session_start();
@@ -45,7 +52,15 @@
 					$result = $db->query($query);
 					
 					while ($row = $result->fetch_row()) {
-						printf("<ul>%s %s %s %s\n</ul>", $row[0], $row[1], $row[2], $row[3]);
+						echo "<tr>";
+
+						echo "<td>$row[0]</td>";
+						echo "<td>$row[1]</td>";
+						echo "<td>$row[2]</td>";
+						echo "<td>$row[3]</td>";
+
+						echo "</tr>\n";
+						//printf("<ul>%s %s %s %s\n</ul>", $row[0], $row[1], $row[2], $row[3]);
 					}
 				}
 			?>
