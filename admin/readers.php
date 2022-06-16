@@ -35,24 +35,36 @@
 				<br/><br/>
 				<input type = "submit" value = " Submit "/><br/>
 			</form>
-			<div>
-				<h2>Lista Czytelników</h2>
-				<ul class = "lista">
-					<?php
+			<table class="tablica">
+					<tr>
+						<th>Imię i Nazwisko</th>
+						<th>Data Urodzenia</th>
+						<th>Płeć</th>
+						<th>Usuń</th>
+					</tr>
+				<?php
+					//if($_SERVER["REQUEST_METHOD"] == "POST") { 
 						$plec = array("Nieokreślono", "Mężczyzna", "Kobieta");
-						$sql = "SELECT * FROM czytelnicy";
-						$result = mysqli_query($db,$sql);
-						if ($result->num_rows > 0) {
-							// output data of each row
-							while($row = $result->fetch_assoc()) {
-								echo "<li><div>id: ".$row['id']." | Imię i Nazwisko: ".$row['imie']." | Data Urodzenia: ".$row['urodziny']." | Płeć: ".$plec[$row['plec']]." | </div><form action='deleteuser.php' method='post'>&nbsp<button type='submit' name='delete' value=".$row['id'].">Usuń</button></form></li>";
-							} //.$row['id'].
-						} else {
-							echo "0 results";
+					
+						mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+						$query = "SELECT imie, urodziny, plec, id FROM czytelnicy";
+						
+						$result = $db->query($query);
+						
+						while ($row = $result->fetch_row()) {
+							echo "<tr>";
+							
+							echo "<td>$row[0]</td>";
+							echo "<td>$row[1]</td>";
+							echo "<td>".$plec[$row[2]]."</td>";
+							echo "<td><form action='deleteuser.php' method='post'><button type='submit' name='delete' value=".$row[3].">Usuń</button></form></td>";
+							echo "</tr>\n";
+							//printf("<ul>%s %s %s %s\n</ul>", $row[0], $row[1], $row[2], $row[3]);
 						}
-					?>
-				</ul>
-			</div>
+					//}
+				?>
+				</table>
 		</div>
     </body>
 </html>

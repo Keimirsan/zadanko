@@ -37,18 +37,19 @@
 					<th>Tytuł</th>
 					<th>Gatunek</th>
 					<th>Autor</th>
+					<th>Dostępność</th>
 					<th>Rezerwacja</th>
 				</tr>
 			<?php
-				
 				if($_SERVER["REQUEST_METHOD"] == "POST") { 
 					$gatunekInt = array("Fantastyka", "Sci-Fi", "Romans", "Horror");
+					$stanInt = array("Dostępna", "Wypożyczona", "Zarezerwowana");
 					$tytul = mysqli_real_escape_string($db,$_POST['tytul']); 
 					$gatunek = mysqli_real_escape_string($db,$_POST['gatunek']);
 				
 					mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-					$query = "SELECT tytul, gatunek, autor, id FROM ksiazki WHERE (tytul LIKE '%$tytul%'  OR autor LIKE '%$tytul%') AND gatunek LIKE '%$gatunek%'";
+					$query = "SELECT tytul, gatunek, autor, stan, id FROM ksiazki WHERE (tytul LIKE '%$tytul%'  OR autor LIKE '%$tytul%') AND gatunek LIKE '%$gatunek%'";
 					
 					$result = $db->query($query);
 					
@@ -58,7 +59,8 @@
 						echo "<td>$row[0]</td>";
 						echo "<td>".$gatunekInt[$row[1]- 1]."</td>";
 						echo "<td>$row[2]</td>";
-						echo "<td><form action='reservebook.php' method='post'>&nbsp<button type='submit' name='delete' value=".$row[0].">Zarezerwuj</button></form></td>";
+						echo "<td>".$stanInt[$row[3]- 1]."</td>";
+						echo "<td><form action='reservebook.php' method='post'>&nbsp<button type='submit' name='reserve' value=".$row[4].">Zarezerwuj</button></form></td>";
 						echo "</tr>\n";
 						//printf("<ul>%s %s %s %s\n</ul>", $row[0], $row[1], $row[2], $row[3]);
 					}
