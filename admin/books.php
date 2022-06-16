@@ -35,23 +35,55 @@
 				</form>
 			</div>
 			<div>
-				<h2>Zbiór książek</h2>
-				<ul class = "lista">
+				<h1>WYSZUKIWANIE KSIĄŻEK</h1>
+				<form action = "" method = "post">
+					<label>Tytuł:</label><input type = "text" name = "tytul" class = "box"/>
+					<label for="gatunek">Gatunek:</label>
+					<select id="gatunek" name = "gatunek">
+						<option value="">Wszystkie</option>
+						 <option value="1">Fantastyka</option>
+						 <option value="2">Sci-Fi</option>
+						 <option value="3">Romans</option>
+						 <option value="4">Horror</option>
+					</select>
+					<input type = "submit" value = " Szukaj "/><br/>
+				</form>
+				</br>
+				<table class="tablica">
+					<tr>
+						<th>Tytuł</th>
+						<th>Gatunek</th>
+						<th>Autor</th>
+						<th>Dostępność</th>
+						<th>Usuń</th>
+					</tr>
 				<?php
-					$gatunekInt = array("Fantastyka", "Sci-Fi", "Romans", "Horror");
-					$stanInt = array("Dostępna", "Wypożyczona", "Zarezerwowana");
-					$sql = "SELECT * FROM ksiazki";
-					$result = mysqli_query($db,$sql);
-					if ($result->num_rows > 0) {
-						// output data of each row
-						while($row = $result->fetch_assoc()) {
-							echo "<li><div>id: ".$row['ID']." | Tytuł: ".$row['tytul']." | Gatunek: ".$gatunekInt[$row['gatunek']- 1]." | Autor: ".$row['autor']." | Stan: ".$stanInt[$row['stan']- 1]."</div><form action='deletebook.php' method='post'>&nbsp<button type='submit' name='delete' value=".$row['ID'].">Usuń</button></form></li>";
+					if($_SERVER["REQUEST_METHOD"] == "POST") { 
+						$gatunekInt = array("Fantastyka", "Sci-Fi", "Romans", "Horror");
+						$stanInt = array("Dostępna", "Wypożyczona", "Zarezerwowana");
+						$tytul = mysqli_real_escape_string($db,$_POST['tytul']); 
+						$gatunek = mysqli_real_escape_string($db,$_POST['gatunek']);
+					
+						mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+						$query = "SELECT tytul, gatunek, autor, stan, id FROM ksiazki WHERE (tytul LIKE '%$tytul%'  OR autor LIKE '%$tytul%') AND gatunek LIKE '%$gatunek%'";
+						
+						$result = $db->query($query);
+						
+						while ($row = $result->fetch_row()) {
+							echo "<tr>";
+
+							echo "<td>$row[0]</td>";
+							echo "<td>".$gatunekInt[$row[1]- 1]."</td>";
+							echo "<td>$row[2]</td>";
+							echo "<td>".$stanInt[$row[3]- 1]."</td>";
+							echo "<td><form action='deletebook.php' method='post'><button type='submit' name='delete' value=".$row[4].">Usuń</button></form></td>";
+							echo "</tr>\n";
+							//printf("<ul>%s %s %s %s\n</ul>", $row[0], $row[1], $row[2], $row[3]);
 						}
-					} else {
-						echo "0 results";
 					}
 				?>
-				</ul>
+				</table>
 			</div>
 		</div>
      </body>
