@@ -52,12 +52,13 @@
 				<h2>Lista Czytelników</h2>
 				<ul class = "lista">
 					<?php
+						$plec = array("Nieokreślono", "Mężczyzna", "Kobieta");
 						$sql = "SELECT * FROM czytelnicy";
 						$result = mysqli_query($db,$sql);
 						if ($result->num_rows > 0) {
 							// output data of each row
 							while($row = $result->fetch_assoc()) {
-								echo "<li><div>id: ".$row['id']." | Imię i Nazwisko: ".$row['imie']." | </div><form action='deleteuser.php' method='post'>&nbsp<button type='submit' name='delete' value=".$row['id'].">Usuń</button></form></li>";
+								echo "<li><div>id: ".$row['id']." | Imię i Nazwisko: ".$row['imie']." | Data Urodzenia: ".$row['urodziny']." | Płeć: ".$plec[$row['plec']]." | </div><form action='deleteuser.php' method='post'>&nbsp<button type='submit' name='delete' value=".$row['id'].">Usuń</button></form></li>";
 							} //.$row['id'].
 						} else {
 							echo "0 results";

@@ -18,24 +18,8 @@
 			</ul>
 		</div>
 		<div class="glowna">
-			<?php
-				//include("config.php");
-			   
-				if($_SERVER["REQUEST_METHOD"] == "POST") { 
-					 
-					
-					$tytul = mysqli_real_escape_string($db,$_POST['tytul']);
-					$gatunek = mysqli_real_escape_string($db,$_POST['gatunek']);
-					$autor = mysqli_real_escape_string($db,$_POST['autor']);
-					
-				  
-					$sql = "INSERT INTO ksiazki(tytuł, gatunek, autor) VALUES ('$tytul','$gatunek','$autor')";
-					$result = mysqli_query($db,$sql);
-					//echo $result;
-				}
-			?>
 			<div> 
-				<form action = "" method = "post">
+				<form action = "addbook.php" method = "post">
 					<h2>Dodaj książkę</h2>
 					<label>Tytul:</label><input type = "text" name = "tytul" class = "box" required/><br /><br/>
 					<label>Gatunek:</label>
