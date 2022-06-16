@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 15 Cze 2022, 08:40
+-- Czas generowania: 16 Cze 2022, 13:50
 -- Wersja serwera: 10.4.24-MariaDB
 -- Wersja PHP: 8.1.6
 
@@ -51,17 +51,21 @@ CREATE TABLE `czytelnicy` (
   `id` int(11) NOT NULL,
   `login` text NOT NULL,
   `password` text NOT NULL,
-  `imie` text NOT NULL
+  `imie` text NOT NULL,
+  `urodziny` date DEFAULT NULL,
+  `plec` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Zrzut danych tabeli `czytelnicy`
 --
 
-INSERT INTO `czytelnicy` (`id`, `login`, `password`, `imie`) VALUES
-(1, 'user', 'user', 'Janusz Kowalski'),
-(2, 'user2', 'user2', 'Adrian Ziutek'),
-(3, 'user3', 'user3', 'Mariusz Ziomek');
+INSERT INTO `czytelnicy` (`id`, `login`, `password`, `imie`, `urodziny`, `plec`) VALUES
+(2, 'user2', 'user2', 'Adrian Ziutek', '1992-04-08', 1),
+(3, 'user3', 'user3', 'Mariusz Ziomek', NULL, 0),
+(16, 'user3', 'user3', 'Bartek Guz', '1998-07-31', 1),
+(17, 'user3', 'user3', 'Bartek Guz', '1998-07-31', 1),
+(18, 'user3', 'user3', 'Bartek Guz', '1998-07-31', 1);
 
 -- --------------------------------------------------------
 
@@ -110,9 +114,9 @@ INSERT INTO `ksiazki` (`ID`, `tytul`, `gatunek`, `autor`, `stan`, `czytelnik`) V
 (7, 'dfg', 1, 'sdfg', 1, 0),
 (8, 'dsfg', 1, 'dsg', 1, 0),
 (9, 'dsfg', 3, 'sd', 1, 0),
-(10, 'dsfg', 3, 'sd', 1, 0),
-(11, 'dsfg', 3, 'sd', 1, 0),
-(12, 'dsfg', 3, 'sd', 1, 0);
+(13, 'ffgh', 2, 'fgh', 1, 0),
+(15, 'g', 4, 'fgh', 1, 0),
+(16, 'asd', 3, 'asd', 1, 0);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -156,7 +160,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT dla tabeli `czytelnicy`
 --
 ALTER TABLE `czytelnicy`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT dla tabeli `gatunek`
@@ -168,7 +172,7 @@ ALTER TABLE `gatunek`
 -- AUTO_INCREMENT dla tabeli `ksiazki`
 --
 ALTER TABLE `ksiazki`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
