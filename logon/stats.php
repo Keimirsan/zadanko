@@ -1,4 +1,7 @@
 <!doctype html>
+<?php
+	include('session.php');
+?>
 <html>
      <head>
           <meta charset="UTF-8" />
@@ -13,6 +16,7 @@
 				<li class="mbutton center"><a href="lend.php"><p>Wypożycz</p></a></li>
 				<li class="mbutton center"><a href="return.php"><p>Zwróć</p></a></li>
 				<li class="mbutton center"><a href="stats.php"><p>Statystyka</p></a></li>
+				<li class="mbutton center"><a href="logout.php"><p>Wyloguj</p></a></li>
 			</ul>
 		</div>
 		<div class="glowna">
