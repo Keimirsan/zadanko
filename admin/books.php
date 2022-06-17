@@ -83,6 +83,7 @@
 						}
 					?>
 				</table></br></br>
+				<h1>POTWIERDŹ WYPORZYCZENIE</h1>
 				<table class="tablica">
 					<tr>
 						<th>Tytuł</th>

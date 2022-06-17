@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 16 Cze 2022, 13:50
+-- Czas generowania: 17 Cze 2022, 15:30
 -- Wersja serwera: 10.4.24-MariaDB
 -- Wersja PHP: 8.1.6
 
@@ -63,9 +63,9 @@ CREATE TABLE `czytelnicy` (
 INSERT INTO `czytelnicy` (`id`, `login`, `password`, `imie`, `urodziny`, `plec`) VALUES
 (2, 'user2', 'user2', 'Adrian Ziutek', '1992-04-08', 1),
 (3, 'user3', 'user3', 'Mariusz Ziomek', NULL, 0),
-(16, 'user3', 'user3', 'Bartek Guz', '1998-07-31', 1),
-(17, 'user3', 'user3', 'Bartek Guz', '1998-07-31', 1),
-(18, 'user3', 'user3', 'Bartek Guz', '1998-07-31', 1);
+(28, 'usersadf', 'user3', 'ja ktor', '2022-06-01', 1),
+(29, 'user635', 'user3', 'sdaf', '2022-06-02', 1),
+(30, 'shg', 'user3', 'cv', '2022-06-01', 1);
 
 -- --------------------------------------------------------
 
@@ -108,15 +108,58 @@ CREATE TABLE `ksiazki` (
 --
 
 INSERT INTO `ksiazki` (`ID`, `tytul`, `gatunek`, `autor`, `stan`, `czytelnik`) VALUES
-(1, 'Lew, czarownica i stara szafa', 1, 'C.S. Lewis', 1, 0),
-(5, 'df', 1, 'sd', 1, 0),
-(6, 'dfg', 1, 'sdfg', 1, 0),
-(7, 'dfg', 1, 'sdfg', 1, 0),
-(8, 'dsfg', 1, 'dsg', 1, 0),
-(9, 'dsfg', 3, 'sd', 1, 0),
-(13, 'ffgh', 2, 'fgh', 1, 0),
-(15, 'g', 4, 'fgh', 1, 0),
-(16, 'asd', 3, 'asd', 1, 0);
+(1, 'Lew, czarownica i stara szafa', 1, 'C.S. Lewis', 2, 1),
+(5, 'df', 1, 'sd', 2, 3),
+(6, 'dfg', 1, 'sdfg', 2, 3),
+(7, 'dfg', 1, 'sdfg', 2, 3),
+(8, 'dsfg', 1, 'dsg', 2, 3),
+(9, 'dsfg', 3, 'sd', 2, 3),
+(13, 'ffgh', 2, 'fgh', 2, 3),
+(15, 'g', 4, 'fgh', 2, 3),
+(16, 'asd', 3, 'asd', 2, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `statystyka`
+--
+
+CREATE TABLE `statystyka` (
+  `id` int(11) NOT NULL,
+  `id_ksiazka` int(11) NOT NULL,
+  `id_czytelnik` int(11) NOT NULL,
+  `data` date NOT NULL,
+  `typ` int(11) NOT NULL,
+  `id_admin` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Zrzut danych tabeli `statystyka`
+--
+
+INSERT INTO `statystyka` (`id`, `id_ksiazka`, `id_czytelnik`, `data`, `typ`, `id_admin`) VALUES
+(1, 3, 3, '2022-06-17', 2, 2),
+(2, 6, 3, '0000-00-00', 2, 1),
+(3, 8, 3, '0000-00-00', 2, 1),
+(4, 13, 3, '0000-00-00', 2, 1),
+(5, 1, 1, '0000-00-00', 2, 1),
+(6, 1, 1, '0000-00-00', 2, 1),
+(7, 1, 1, '0000-00-00', 2, 1),
+(8, 1, 1, '0000-00-00', 2, 1),
+(9, 1, 1, '0000-00-00', 2, 1),
+(10, 1, 1, '0000-00-00', 2, 1),
+(11, 1, 1, '0000-00-00', 2, 1),
+(12, 1, 1, '0000-00-00', 2, 1),
+(13, 1, 1, '0000-00-00', 2, 1),
+(14, 1, 1, '0000-00-00', 2, 1),
+(15, 1, 1, '0000-00-00', 2, 1),
+(16, 1, 1, '0000-00-00', 2, 1),
+(17, 1, 1, '0000-00-00', 2, 1),
+(18, 1, 1, '0000-00-00', 2, 1),
+(19, 1, 1, '0000-00-00', 2, 1),
+(20, 1, 1, '2022-06-17', 2, 1),
+(21, 1, 1, '2022-06-17', 2, 1),
+(22, 1, 1, '2022-06-17', 2, 1);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -147,6 +190,12 @@ ALTER TABLE `ksiazki`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indeksy dla tabeli `statystyka`
+--
+ALTER TABLE `statystyka`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT dla zrzuconych tabel
 --
 
@@ -160,7 +209,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT dla tabeli `czytelnicy`
 --
 ALTER TABLE `czytelnicy`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT dla tabeli `gatunek`
@@ -173,6 +222,12 @@ ALTER TABLE `gatunek`
 --
 ALTER TABLE `ksiazki`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT dla tabeli `statystyka`
+--
+ALTER TABLE `statystyka`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
