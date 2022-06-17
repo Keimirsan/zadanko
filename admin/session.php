@@ -4,7 +4,7 @@
    
 	$user_check = $_SESSION['login_admin'];
 	
-	$ses_sql = mysqli_query($db,"select login from admin where login = '$user_check' ");
+	$ses_sql = mysqli_query($db,"select login, id from admin where login = '$user_check' ");
    
 	$row = mysqli_fetch_array($ses_sql,MYSQLI_ASSOC);
    

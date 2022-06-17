@@ -21,7 +21,7 @@
 				  
 					$sql = "SELECT id FROM admin WHERE login = '$myusername' and password = '$mypassword'";
 					$result = mysqli_query($db,$sql);
-					//$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+					$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 					//$active = $row['active'];
 				  
 					$count = mysqli_num_rows($result);
@@ -31,6 +31,7 @@
 					if($count == 1) {
 						//session_register("myusername");
 						$_SESSION['login_admin'] = $myusername;
+						$_SESSION['id_admin'] = $row['id'];
 					 
 					header("location: start.php");
 					}else {
