@@ -34,6 +34,14 @@
 					</select>
 				<br/><br/>
 				<input type = "submit" value = " Submit "/><br/>
+				<?php 
+					if(isset($_SESSION['istnieje'])){
+						if ($_SESSION['istnieje'] == 1){
+							echo "Użytkownik z podanym loginem juz istnieje!";
+						}
+					}
+					unset($_SESSION['istnieje']);
+				?>
 			</form>
 			<table class="tablica">
 					<tr>
