@@ -28,7 +28,6 @@
 				<label>Data Urodzenia: </label><input type = "date" name = "urodziny" class = "box" required/><br/><br/>
 				<label>Płeć: </label>
 					<select name = "plec">
-						<option value = "0">Nieokreślono</option>
 						<option value = "1">Mężczyzna</option>
 						<option value = "2">Kobieta</option>
 					</select>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 17 Cze 2022, 15:30
+-- Czas generowania: 18 Cze 2022, 13:30
 -- Wersja serwera: 10.4.24-MariaDB
 -- Wersja PHP: 8.1.6
 
@@ -62,7 +62,7 @@ CREATE TABLE `czytelnicy` (
 
 INSERT INTO `czytelnicy` (`id`, `login`, `password`, `imie`, `urodziny`, `plec`) VALUES
 (2, 'user2', 'user2', 'Adrian Ziutek', '1992-04-08', 1),
-(3, 'user3', 'user3', 'Mariusz Ziomek', NULL, 0),
+(3, 'user3', 'user3', 'Mariusz Ziomek', '1992-04-08', 1),
 (28, 'usersadf', 'user3', 'ja ktor', '2022-06-01', 1),
 (29, 'user635', 'user3', 'sdaf', '2022-06-02', 1),
 (30, 'shg', 'user3', 'cv', '2022-06-01', 1);
@@ -108,7 +108,7 @@ CREATE TABLE `ksiazki` (
 --
 
 INSERT INTO `ksiazki` (`ID`, `tytul`, `gatunek`, `autor`, `stan`, `czytelnik`) VALUES
-(1, 'Lew, czarownica i stara szafa', 1, 'C.S. Lewis', 2, 1),
+(1, 'Lew, czarownica i stara szafa', 1, 'C.S. Lewis', 2, 28),
 (5, 'df', 1, 'sd', 2, 3),
 (6, 'dfg', 1, 'sdfg', 2, 3),
 (7, 'dfg', 1, 'sdfg', 2, 3),
@@ -161,6 +161,28 @@ INSERT INTO `statystyka` (`id`, `id_ksiazka`, `id_czytelnik`, `data`, `typ`, `id
 (21, 1, 1, '2022-06-17', 2, 1),
 (22, 1, 1, '2022-06-17', 2, 1);
 
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `statystyka2`
+--
+
+CREATE TABLE `statystyka2` (
+  `id` int(11) NOT NULL,
+  `urodziny` date NOT NULL,
+  `plec` int(11) NOT NULL,
+  `gatunek` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Zrzut danych tabeli `statystyka2`
+--
+
+INSERT INTO `statystyka2` (`id`, `urodziny`, `plec`, `gatunek`) VALUES
+(1, '1992-04-08', 0, 1),
+(2, '1992-04-08', 1, 1),
+(3, '2022-06-01', 1, 1);
+
 --
 -- Indeksy dla zrzutów tabel
 --
@@ -196,6 +218,12 @@ ALTER TABLE `statystyka`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeksy dla tabeli `statystyka2`
+--
+ALTER TABLE `statystyka2`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT dla zrzuconych tabel
 --
 
@@ -228,6 +256,12 @@ ALTER TABLE `ksiazki`
 --
 ALTER TABLE `statystyka`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT dla tabeli `statystyka2`
+--
+ALTER TABLE `statystyka2`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
