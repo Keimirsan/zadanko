@@ -10,9 +10,8 @@
      <body>
 		<div class="menu">
 			<ul class="ulmenu">
-				<li class="mbutton center"><a href="start.php"><p>Strona główna</p></a></li>
-				<li class="mbutton center"><a href="books.php"><p>Książki</p></a></li>
-				<li class="mbutton center"><a href="readers.php"><p>Czytelnicy</p></a></li>
+				<li class="mbutton center"><a href="library.php"><p>Biblioteka</p></a></li>
+				<li class="mbutton center"><a href="listbook.php"><p>Twoje Książki</p></a></li>
 				<li class="mbutton center"><a href="stats.php"><p>Statystyka</p></a></li>
 				<li class="mbutton center"><a href="logout.php"><p>Wyloguj</p></a></li>
 			</ul>
