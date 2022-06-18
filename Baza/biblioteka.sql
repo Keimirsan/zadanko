@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 18 Cze 2022, 13:30
+-- Czas generowania: 18 Cze 2022, 20:52
 -- Wersja serwera: 10.4.24-MariaDB
 -- Wersja PHP: 8.1.6
 
@@ -109,7 +109,7 @@ CREATE TABLE `ksiazki` (
 
 INSERT INTO `ksiazki` (`ID`, `tytul`, `gatunek`, `autor`, `stan`, `czytelnik`) VALUES
 (1, 'Lew, czarownica i stara szafa', 1, 'C.S. Lewis', 2, 28),
-(5, 'df', 1, 'sd', 2, 3),
+(5, 'df', 1, 'sd', 2, 30),
 (6, 'dfg', 1, 'sdfg', 2, 3),
 (7, 'dfg', 1, 'sdfg', 2, 3),
 (8, 'dsfg', 1, 'dsg', 2, 3),
@@ -179,9 +179,11 @@ CREATE TABLE `statystyka2` (
 --
 
 INSERT INTO `statystyka2` (`id`, `urodziny`, `plec`, `gatunek`) VALUES
-(1, '1992-04-08', 0, 1),
-(2, '1992-04-08', 1, 1),
-(3, '2022-06-01', 1, 1);
+(1, '1990-04-08', 1, 1),
+(2, '1990-04-08', 2, 2),
+(3, '2022-06-01', 1, 2),
+(4, '2022-06-01', 1, 3),
+(5, '1992-04-08', 1, 2);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -261,7 +263,7 @@ ALTER TABLE `statystyka`
 -- AUTO_INCREMENT dla tabeli `statystyka2`
 --
 ALTER TABLE `statystyka2`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
