@@ -18,7 +18,34 @@
 			</ul>
 		</div>
 		<div class="glowna">
-		
+			<h2>Najpopularniejsze Gatunki</h2>
+			<?php
+				$ileG = array(1 => 0, 2 => 0, 3 => 0, 4 => 0);
+				$gatunekInt = array("Fantastyka", "Sci-Fi", "Romans", "Horror");
+				$gatunekCount = array();
+				
+				$sql = "SELECT COUNT(id) AS count FROM statystyka2;";
+				$result = mysqli_query($db,$sql);
+				$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+				$ile = $row['count'];
+				
+				$sql = "SELECT * FROM statystyka2;";
+				$result = mysqli_query($db,$sql);
+				
+				if ($result->num_rows > 0) {
+					while($row = $result->fetch_assoc()) {
+						$ileG[$row['gatunek']]++;
+					}
+				}
+				rsort($ileG);
+				$i = 0;
+				foreach($ileG as $x => $x_value) {
+					$i++;
+					$proc = ($x_value / $ile) * 100;
+					$proc = round($proc, 2);
+					echo "$i.$gatunekInt[$x] $proc %</br></br>";
+				}
+			?>
 		</div>
      </body>
 </html>
